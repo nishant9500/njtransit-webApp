@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+ 
+      <style>
+         #multibackground {
+
+background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 82%);
+            background-position: left top, left top;
+            background-repeat: no-repeat, repeat;
+            padding: 75px;
+         }
+      form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+	  </style>
+	  
+
+</head>
+
+<body>
+<div id = "multibackground">
+ <div class="login">
+	<h1>NJ Transit schedule</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="User" placeholder="user" required="required" />
+		<br>
+        <input type="text" name="pass" placeholder="pass" required="required" />
+		<br>
+		<input type="text" name="source" placeholder="source" required="required" />
+		<br>
+		<input type="text" name="cordinates" placeholder="cordinates" required="required" />
+		<br>
+		<input type="text" name="destination" placeholder="destination" required="required" />
+		<br>
+		
+		<br>
+		
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">submit</button>
+    </form>
+
+   <br>
+   <br><div class="result" align="center">
+    
+        
+        <br> The schedule is
+           <p style="font-size:20px">{{ prediction_text }}</p>
+    
+</div>
+  
+
+ </div>
+ </div>
+
+
+</body>
+</html>
