@@ -63,9 +63,11 @@ def predict():
     contents = json.loads(m)
     met1=contents['Trains']
     met2=met1['Train']
-    result='Schedule departure time:'+det4['SCHED_DEP_DATE']+'\n'+'Destination:'+det4['DESTINATION']+'\n'+'Track:'+det4['TRACK']+'\n'+'Status'+det4['STATUS']+'\n'+'Last modified:'+det4['LAST_MODIFIED']
-    #result2='Direction:'+met2['DIRECTION']+'STOPS:'+met2['STOPS']
-    return render_template('index.html', prediction_text=result)
+    met3=met2['STOPS']
+    met4=met3['STOP']
+    result='Schedule departure time:'+met4['Sched_TIME']+'\n'+'Destination:'+det4['DESTINATION']+'\n'+'Track:'+det4['TRACK']+'\n'+'Status'+det4['STATUS']+'\n'
+    result2='estimated time::'+met4['EST_TIME']+'Last modified:'+det4['LAST_MODIFIED']
+    return render_template('index.html', prediction_text=result+result2)
 
 
 if __name__ == '__main__':
